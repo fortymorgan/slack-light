@@ -15,7 +15,7 @@
     "babel-node": "babel-node",
     "flow": "flow",
     "flow-typed": "flow-typed",
-    "start": "babel-node ./server/bin/slack.js",
+    "start": "babel-node ./src/bin/slack.js",
     "eslint": "eslint",
     "webpack": "webpack",
     "build-server": "babel server --out-dir dist --source-maps inline",
