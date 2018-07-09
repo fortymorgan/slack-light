@@ -1,3 +1,26 @@
 .fade.in {
   opacity: 1;
 }
+
+.app {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.channels-list {
+  grid-column: 1 / 2;
+}
+
+.chat-window {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.new-chat-message {
+  grid-row: 2 / 3;
+}
+
+.messages {
+  min-height: 500px;
+}
