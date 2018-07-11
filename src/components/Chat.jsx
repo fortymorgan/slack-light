@@ -3,7 +3,7 @@ import ChatMessages from './ChatMessages';
 import NewMessage from './NewMessage';
 
 const Chat = () => (
-  <div className="chat-window">
+  <div className="col-9">
     <ChatMessages />
     <NewMessage />
   </div>

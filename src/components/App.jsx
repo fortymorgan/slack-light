@@ -3,7 +3,7 @@ import ChannelsList from '../containers/ChannelsList';
 import Chat from './Chat';
 
 const App = () => (
-  <div className="app">
+  <div className="row">
     <ChannelsList />
     <Chat />
   </div>

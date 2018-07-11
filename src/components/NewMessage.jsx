@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 const NewMessage = () => (
-  <form className="new-chat-message">
+  <form>
     <FormGroup>
       <FormControl type="text" placeholder="New message" />
     </FormGroup>
