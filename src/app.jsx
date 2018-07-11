@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import faker from 'faker';
 import cookies from 'js-cookie';
@@ -10,13 +10,11 @@ import reducers from './reducers';
 
 export default ({ channels }) => {
   // eslint-disable-next-line no-underscore-dangle
-  const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-
-  const devtoolMiddleware = ext && ext();
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(
     reducers,
-    devtoolMiddleware,
+    composeEnhancers(),
   );
 
   store.dispatch(actions.addChannels(channels));
