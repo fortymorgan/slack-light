@@ -6,7 +6,7 @@ import faker from 'faker';
 import cookies from 'js-cookie';
 import App from './components/App.jsx';
 import * as actions from './actions';
-import reducers from './reducers/reducers';
+import reducers from './reducers';
 
 export default ({ channels }) => {
   // eslint-disable-next-line no-underscore-dangle
