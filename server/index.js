@@ -1,7 +1,3 @@
-// @flow
-
-// import 'babel-polyfill';
-
 import path from 'path';
 import Koa from 'koa';
 import Pug from 'koa-pug';
@@ -9,7 +5,6 @@ import socket from 'socket.io';
 import http from 'http';
 import Router from 'koa-router';
 import koaLogger from 'koa-logger';
-// import serve from 'koa-static';
 import middleware from 'koa-webpack';
 import bodyParser from 'koa-bodyparser';
 import session from 'koa-generic-session';
@@ -24,7 +19,6 @@ export default () => {
   app.keys = ['some secret hurr'];
   app.use(session(app));
   app.use(bodyParser());
-  // app.use(serve(path.join(__dirname, '..', 'public')));
   app.use(middleware({
     config: webpackConfig,
   }));
