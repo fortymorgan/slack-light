@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@babel/polyfill';
 import gon from 'gon';
 import '../assets/application.css';
 import app from './app.jsx';

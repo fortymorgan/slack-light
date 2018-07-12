@@ -4,4 +4,6 @@
 
 .messages {
   height: 500px;
+  overflow: auto;
+  margin-bottom: 10px;
 }

@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
-import ChannelsList from '../components/ChannelsList';
+import NewMessageForm from '../components/NewMessage';
 
 const mapStateToProps = (state) => {
-  const { channelsList, currentChannel } = state;
+  const { username, currentChannel } = state;
 
-  return { channelsList, currentChannel };
+  return { username, currentChannel };
 };
 
 export default connect(
   mapStateToProps,
   actionCreators,
-)(ChannelsList);
+)(NewMessageForm);
