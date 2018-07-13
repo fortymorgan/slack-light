@@ -16,8 +16,8 @@ export default class ChatMessages extends React.Component {
   render() {
     const { messages } = this.props;
     return (
-      <div className="messages" ref={(div) => { this.window = div; }}>
-        {messages.map(({ author, text, id }) => <Message key={id} author={author} text={text} />)}
+      <div className="messages mb-3" ref={(div) => { this.window = div; }}>
+        {messages.map(m => <Message key={m.id} message={m} />)}
       </div>
     );
   }
