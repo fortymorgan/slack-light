@@ -27,10 +27,20 @@ const currentChannel = handleActions({
   },
 }, 0);
 
+const errorState = handleActions({
+  [actions.catchError](state, { payload: { error } }) {
+    return error;
+  },
+  [actions.clearError]() {
+    return '';
+  },
+}, '');
+
 export default combineReducers({
   channelsList,
   messagesList,
   username,
   currentChannel,
+  errorState,
   form: formReducer,
 });
