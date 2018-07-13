@@ -12,6 +12,7 @@ export const addNewMessage = (author, text, channel) => async () => {
       attributes: {
         author,
         text,
+        time: new Date().toLocaleTimeString(),
       },
     },
   };

@@ -1,8 +1,14 @@
 import React from 'react';
 
-const Message = props => (
-  <p><b>{props.author}:</b> {props.text}</p>
-);
+const Message = (props) => {
+  const { author, text, time } = props.message;
+  return (
+    <div className="d-flex justify-content-between">
+      <div><b>{author}:</b> {text}</div>
+      <div>{time}</div>
+    </div>
+  );
+};
 
 export default class ChatMessages extends React.Component {
   scrollDown = () => {
