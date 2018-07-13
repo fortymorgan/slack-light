@@ -9,3 +9,7 @@
 .messages {
   overflow: auto;
 }
+
+.list-group-item {
+  text-align: start;
+}
