@@ -35,6 +35,9 @@ export default ({ channels, messages, currentChannelId }) => {
 
   const socket = io();
   socket.on('newMessage', ({ data: { attributes } }) => store.dispatch(actions.addMessages([attributes])));
+  socket.on('newChannel', ({ data: { attributes } }) => store.dispatch(actions.addChannels([attributes])));
+  socket.on('removeChannel', ({ data: { id } }) => store.dispatch(actions.removeChannel(id)));
+  socket.on('renameChannel', ({ data: { attributes } }) => store.dispatch(actions.renameChannel(attributes)));
 
   ReactDOM.render(
     <Provider store={store}>

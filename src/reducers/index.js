@@ -7,6 +7,12 @@ const channelsList = handleActions({
   [actions.addChannels](state, { payload: { channels } }) {
     return [...state, ...channels];
   },
+  [actions.removeChannel](state, { payload: { id } }) {
+    return state.filter(ch => ch.id !== id);
+  },
+  [actions.renameChannel](state, { payload: { channel } }) {
+    return state.map(ch => (ch.id === channel.id ? { ...ch, name: channel.name } : ch));
+  },
 }, []);
 
 const messagesList = handleActions({
