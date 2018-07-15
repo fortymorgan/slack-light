@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`channel component active non-removable 1`] = `
+<span
+  className="list-group-item active"
+>
+  general
+  <div
+    className="options d-flex"
+  >
+    <span
+      className="rename"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+  </div>
+</span>
+`;
+
+exports[`channel component active removable 1`] = `
+<span
+  className="list-group-item active"
+>
+  general
+  <div
+    className="options d-flex"
+  >
+    <span
+      className="rename"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+    <span
+      className="delete ml-2"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+  </div>
+</span>
+`;
+
+exports[`channel component non-active non-removable 1`] = `
+<span
+  className="list-group-item"
+  onClick={undefined}
+>
+  general
+  <div
+    className="options d-flex"
+  >
+    <span
+      className="rename"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+  </div>
+</span>
+`;
+
+exports[`channel component non-active removable 1`] = `
+<span
+  className="list-group-item"
+  onClick={undefined}
+>
+  general
+  <div
+    className="options d-flex"
+  >
+    <span
+      className="rename"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+    <span
+      className="delete ml-2"
+      onBlur={[Function]}
+      onClick={null}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    />
+  </div>
+</span>
+`;
