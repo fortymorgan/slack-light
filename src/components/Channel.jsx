@@ -1,5 +1,6 @@
 import React from 'react';
-import { ListGroupItem, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import cn from 'classnames';
 
 const Channel = (props) => {
   const {
@@ -31,8 +32,15 @@ const Channel = (props) => {
     </div>
   );
 
-  return active ? <ListGroupItem active>{name}{options}</ListGroupItem>
-    : <ListGroupItem onClick={handleSwitch}>{name}{options}</ListGroupItem>;
+  const className = cn({
+    'list-group-item': true,
+    'd-flex': true,
+    'justify-content-between': true,
+    'pr-3': true,
+    active,
+  });
+
+  return <li className={className} onClick={handleSwitch}>{name}{options}</li>;
 };
 
 export default Channel;

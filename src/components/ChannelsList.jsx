@@ -1,5 +1,4 @@
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import Channel from './Channel';
 
 export default class ChannelsList extends React.Component {
@@ -39,7 +38,7 @@ export default class ChannelsList extends React.Component {
     const { channelsList, currentChannel } = this.props;
 
     return (
-      <ListGroup bsClass="list-group col-3">
+      <ul className="list-group col-3">
         {channelsList.map(({ id, name, removable }) => (
           <Channel
             key={id}
@@ -51,8 +50,8 @@ export default class ChannelsList extends React.Component {
             removable={removable}
           />
         ))}
-        <ListGroupItem onClick={this.onAddChannel}>+ Add channel</ListGroupItem>
-      </ListGroup>
+        <li className="list-group-item" onClick={this.onAddChannel}>+ Add channel</li>
+      </ul>
     );
   }
 }

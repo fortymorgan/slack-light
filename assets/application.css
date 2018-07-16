@@ -10,12 +10,6 @@
   overflow: auto;
 }
 
-.list-group-item {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 1rem;
-}
-
 .delete:before {
   content: url(img/cross.svg);
 }
