@@ -3,14 +3,13 @@ import axios from 'axios';
 import cookies from 'js-cookie';
 import faker from 'faker';
 
-export const addChannels = createAction('CHANNELS_ADD', channels => ({ channels }));
-export const addMessages = createAction('MESSAGES_ADD', messages => ({ messages }));
-export const setUsername = createAction('USERNAME_SET', user => ({ user }));
-export const setCurrentChannel = createAction('CURRENT_CHANNEL_SET', id => ({ id }));
-export const catchError = createAction('ERROR_CATCH', error => ({ error }));
+export const addChannels = createAction('CHANNELS_ADD');
+export const addMessages = createAction('MESSAGES_ADD');
+export const setCurrentChannel = createAction('CURRENT_CHANNEL_SET');
+export const catchError = createAction('ERROR_CATCH');
 export const clearError = createAction('ERROR_CLEAR');
-export const removeChannel = createAction('CHANNEL_REMOVE', id => ({ id }));
-export const renameChannel = createAction('CHANNEL_RENAME', channel => ({ channel }));
+export const removeChannel = createAction('CHANNEL_REMOVE');
+export const renameChannel = createAction('CHANNEL_RENAME');
 
 export const addNewMessage = (text, id) => async (dispatch) => {
   let { username } = cookies.get();

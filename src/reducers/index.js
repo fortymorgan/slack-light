@@ -4,32 +4,32 @@ import { reducer as formReducer } from 'redux-form';
 import * as actions from '../actions';
 
 const channelsList = handleActions({
-  [actions.addChannels](state, { payload: { channels } }) {
-    return [...state, ...channels];
+  [actions.addChannels](state, { payload }) {
+    return [...state, ...payload];
   },
-  [actions.removeChannel](state, { payload: { id } }) {
-    return state.filter(ch => ch.id !== id);
+  [actions.removeChannel](state, { payload }) {
+    return state.filter(ch => ch.id !== payload);
   },
-  [actions.renameChannel](state, { payload: { channel } }) {
-    return state.map(ch => (ch.id === channel.id ? { ...ch, name: channel.name } : ch));
+  [actions.renameChannel](state, { payload }) {
+    return state.map(ch => (ch.id === payload.id ? { ...ch, name: payload.name } : ch));
   },
 }, []);
 
 const messagesList = handleActions({
-  [actions.addMessages](state, { payload: { messages } }) {
-    return [...state, ...messages];
+  [actions.addMessages](state, { payload }) {
+    return [...state, ...payload];
   },
 }, []);
 
 const currentChannel = handleActions({
-  [actions.setCurrentChannel](state, { payload: { id } }) {
-    return id;
+  [actions.setCurrentChannel](state, { payload }) {
+    return payload;
   },
 }, 0);
 
 const errorState = handleActions({
-  [actions.catchError](state, { payload: { error } }) {
-    return error;
+  [actions.catchError](state, { payload }) {
+    return payload;
   },
   [actions.clearError]() {
     return '';
