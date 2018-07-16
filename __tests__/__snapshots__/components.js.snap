@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`channel component active non-removable 1`] = `
-<span
-  className="list-group-item active"
+<li
+  className="list-group-item d-flex justify-content-between pr-3 active"
+  onClick={undefined}
 >
   general
   <div
@@ -17,12 +18,13 @@ exports[`channel component active non-removable 1`] = `
       onMouseOver={[Function]}
     />
   </div>
-</span>
+</li>
 `;
 
 exports[`channel component active removable 1`] = `
-<span
-  className="list-group-item active"
+<li
+  className="list-group-item d-flex justify-content-between pr-3 active"
+  onClick={undefined}
 >
   general
   <div
@@ -45,12 +47,12 @@ exports[`channel component active removable 1`] = `
       onMouseOver={[Function]}
     />
   </div>
-</span>
+</li>
 `;
 
 exports[`channel component non-active non-removable 1`] = `
-<span
-  className="list-group-item"
+<li
+  className="list-group-item d-flex justify-content-between pr-3"
   onClick={undefined}
 >
   general
@@ -66,12 +68,12 @@ exports[`channel component non-active non-removable 1`] = `
       onMouseOver={[Function]}
     />
   </div>
-</span>
+</li>
 `;
 
 exports[`channel component non-active removable 1`] = `
-<span
-  className="list-group-item"
+<li
+  className="list-group-item d-flex justify-content-between pr-3"
   onClick={undefined}
 >
   general
@@ -95,5 +97,5 @@ exports[`channel component non-active removable 1`] = `
       onMouseOver={[Function]}
     />
   </div>
-</span>
+</li>
 `;
