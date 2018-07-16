@@ -1,6 +1,6 @@
 import React from 'react';
-import ChatMessages from '../containers/ChatMessages';
-import NewMessageForm from '../containers/NewMessage';
+import ChatMessages from './ChatMessages';
+import NewMessageForm from './NewMessage';
 
 const Chat = () => (
   <div className="col-9">

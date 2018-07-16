@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions';
 import ErrorMessage from './ErrorMessage';
 
 const Message = (props) => {
@@ -11,6 +13,15 @@ const Message = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  const { messagesList, currentChannel, errorState } = state;
+
+  const messages = messagesList.filter(m => m.channelId === currentChannel);
+
+  return { messages, errorState };
+};
+
+@connect(mapStateToProps, actionCreators)
 export default class ChatMessages extends React.Component {
   scrollDown = () => {
     const { clientHeight, scrollHeight } = this.window;

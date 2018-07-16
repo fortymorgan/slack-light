@@ -1,6 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions';
 import Channel from './Channel';
 
+const mapStateToProps = (state) => {
+  const { channelsList, currentChannel } = state;
+
+  return { channelsList, currentChannel };
+};
+
+@connect(mapStateToProps, actionCreators)
 export default class ChannelsList extends React.Component {
   onSwitchChannel = id => () => {
     const { setCurrentChannel } = this.props;
