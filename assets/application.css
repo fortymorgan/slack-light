@@ -17,9 +17,9 @@
 }
 
 .delete:before {
-  content: url(../src/img/cross.svg);
+  content: url(img/cross.svg);
 }
 
 .rename:before {
-  content: url(../src/img/pencil.svg);
+  content: url(img/pencil.svg);
 }
