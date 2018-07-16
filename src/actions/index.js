@@ -1,5 +1,7 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
+import cookies from 'js-cookie';
+import faker from 'faker';
 
 export const addChannels = createAction('CHANNELS_ADD', channels => ({ channels }));
 export const addMessages = createAction('MESSAGES_ADD', messages => ({ messages }));
@@ -10,12 +12,19 @@ export const clearError = createAction('ERROR_CLEAR');
 export const removeChannel = createAction('CHANNEL_REMOVE', id => ({ id }));
 export const renameChannel = createAction('CHANNEL_RENAME', channel => ({ channel }));
 
-export const addNewMessage = (author, text, id) => async (dispatch) => {
+export const addNewMessage = (text, id) => async (dispatch) => {
+  let { username } = cookies.get();
+
+  if (!username) {
+    username = faker.name.findName();
+    cookies.set('username', username);
+  }
+
   try {
     const message = {
       data: {
         attributes: {
-          author,
+          author: username,
           text,
           time: new Date().toLocaleTimeString(),
         },
