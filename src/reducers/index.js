@@ -3,44 +3,46 @@ import { handleActions } from 'redux-actions';
 import { reducer as formReducer } from 'redux-form';
 import * as actions from '../actions';
 
-const channelsList = handleActions({
+const channels = handleActions({
   [actions.addChannels](state, { payload }) {
-    return [...state, ...payload];
+    return { ...state, list: payload };
   },
   [actions.addChannel](state, { payload }) {
-    return [...state, payload];
+    return { ...state, list: [...state.list, payload] };
   },
   [actions.removeChannel](state, { payload }) {
-    return state.filter(ch => ch.id !== payload);
+    return { ...state, list: state.list.filter(ch => ch.id !== payload) };
   },
   [actions.renameChannel](state, { payload }) {
-    return state.map(ch => (ch.id === payload.id ? { ...ch, name: payload.name } : ch));
+    return {
+      ...state,
+      list: state.list
+        .map(ch => (ch.id === payload.id ?
+          { ...ch, name: payload.name } : ch)),
+    };
   },
-}, []);
+  [actions.setCurrentChannel](state, { payload }) {
+    return { ...state, current: payload };
+  },
+}, {});
 
-const messagesList = handleActions({
+const messages = handleActions({
   [actions.addMessages](state, { payload }) {
-    return [...state, ...payload];
+    return { ...state, list: payload };
   },
   [actions.addMessage](state, { payload }) {
-    return [...state, payload];
+    return { ...state, list: [...state.list, payload] };
   },
-}, []);
+}, {});
 
-const currentChannel = handleActions({
-  [actions.setCurrentChannel](state, { payload }) {
-    return payload;
-  },
-}, 0);
-
-const errorState = handleActions({
+const error = handleActions({
   [actions.catchError](state, { payload }) {
-    return payload;
+    return { ...state, message: payload };
   },
   [actions.clearError]() {
-    return '';
+    return {};
   },
-}, '');
+}, {});
 
 const newMessageState = handleActions({
   [actions.newMessageRequest]() {
@@ -55,10 +57,9 @@ const newMessageState = handleActions({
 }, '');
 
 export default combineReducers({
-  channelsList,
-  messagesList,
-  currentChannel,
-  errorState,
+  channels,
+  messages,
+  error,
   newMessageState,
   form: formReducer,
 });

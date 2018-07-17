@@ -3,7 +3,7 @@ import { Alert } from 'react-bootstrap';
 
 const ErrorMessage = (props) => {
   const { message, handler } = props;
-  if (message === '') {
+  if (!message) {
     return null;
   }
 

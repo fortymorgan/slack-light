@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = (state) => {
-  const { currentChannel, newMessageState } = state;
+  const { channels: { current }, newMessageState } = state;
 
-  return { currentChannel, newMessageState };
+  return { currentChannel: current, newMessageState };
 };
 
 @connect(mapStateToProps, actionCreators)

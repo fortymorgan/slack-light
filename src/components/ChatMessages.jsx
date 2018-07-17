@@ -14,11 +14,9 @@ const Message = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { messagesList, currentChannel, errorState } = state;
+  const { messages: { list }, channels: { current }, error: { message } } = state;
 
-  const messages = messagesList.filter(m => m.channelId === currentChannel);
-
-  return { messages, errorState };
+  return { messages: list.filter(m => m.channelId === current), error: message };
 };
 
 @connect(mapStateToProps, actionCreators)
@@ -32,14 +30,14 @@ export default class ChatMessages extends React.Component {
   }
 
   render() {
-    const { messages, errorState, clearError } = this.props;
+    const { messages, error, clearError } = this.props;
 
     return (
       <div className="chat d-flex flex-column justify-content-between">
         <div className="messages mb-3" ref={(div) => { this.window = div; }}>
           {messages.map(m => <Message key={m.id} message={m} />)}
         </div>
-        <ErrorMessage message={errorState} handler={clearError} />
+        <ErrorMessage message={error} handler={clearError} />
       </div>
     );
   }

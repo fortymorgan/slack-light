@@ -4,9 +4,9 @@ import * as actionCreators from '../actions';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
-  const { channelsList, currentChannel } = state;
+  const { channels: { list, current } } = state;
 
-  return { channelsList, currentChannel };
+  return { channelsList: list, currentChannel: current };
 };
 
 @connect(mapStateToProps, actionCreators)
