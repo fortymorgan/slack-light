@@ -38,7 +38,7 @@ export const addNewMessage = (text, id) => async (dispatch) => {
       },
     };
 
-    await axios.post(`${window.location}api/v1/channels/${id}/messages`, message);
+    await axios.post(`api/v1/channels/${id}/messages`, message);
     dispatch(newMessageSuccess());
     dispatch(reset('newMessage'));
   } catch (e) {
@@ -57,7 +57,7 @@ export const addNewChannel = name => async (dispatch) => {
       },
     };
 
-    await axios.post(`${window.location}api/v1/channels`, channel);
+    await axios.post('api/v1/channels', channel);
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -65,7 +65,7 @@ export const addNewChannel = name => async (dispatch) => {
 
 export const removeExistingChannel = id => async (dispatch) => {
   try {
-    await axios.delete(`${window.location}api/v1/channels/${id}`);
+    await axios.delete(`api/v1/channels/${id}`);
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -81,7 +81,7 @@ export const renameExistingChannel = (id, name) => async (dispatch) => {
       },
     };
 
-    await axios.patch(`${window.location}api/v1/channels/${id}`, channel);
+    await axios.patch(`api/v1/channels/${id}`, channel);
   } catch (e) {
     dispatch(catchError(e.message));
   }
