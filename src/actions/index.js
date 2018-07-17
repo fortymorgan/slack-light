@@ -14,6 +14,10 @@ export const clearError = createAction('ERROR_CLEAR');
 export const removeChannel = createAction('CHANNEL_REMOVE');
 export const renameChannel = createAction('CHANNEL_RENAME');
 
+export const newMessageRequest = createAction('NEW_MESSAGE_REQUEST');
+export const newMessageSuccess = createAction('NEW_MESSAGE_SUCCESS');
+export const newMessageFailure = createAction('NEW_MESSAGE_FAILURE');
+
 export const addNewMessage = (text, id) => async (dispatch) => {
   let { username } = cookies.get();
 
@@ -22,6 +26,7 @@ export const addNewMessage = (text, id) => async (dispatch) => {
     cookies.set('username', username);
   }
 
+  dispatch(newMessageRequest());
   try {
     const message = {
       data: {
@@ -34,9 +39,11 @@ export const addNewMessage = (text, id) => async (dispatch) => {
     };
 
     await axios.post(`${window.location}api/v1/channels/${id}/messages`, message);
+    dispatch(newMessageSuccess());
     dispatch(reset('newMessage'));
   } catch (e) {
     dispatch(catchError(e.message));
+    dispatch(newMessageFailure());
   }
 };
 

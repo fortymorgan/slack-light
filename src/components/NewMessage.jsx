@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = (state) => {
-  const { currentChannel } = state;
+  const { currentChannel, newMessageState } = state;
 
-  return { currentChannel };
+  return { currentChannel, newMessageState };
 };
 
 @connect(mapStateToProps, actionCreators)
@@ -20,10 +20,16 @@ class NewMessage extends React.Component {
   }
 
   render() {
+    const { newMessageState } = this.props;
+    const disabled = newMessageState === 'request';
+    const inputField = disabled ?
+      <Field name="text" disabled component="input" type="text" className="form-control" placeholder="New message" /> :
+      <Field name="text" component="input" type="text" className="form-control" placeholder="New message" autoFocus />;
+
     return (
       <form onSubmit={this.props.handleSubmit(this.addMessage)}>
         <FormGroup>
-          <Field name="text" component="input" type="text" className="form-control" placeholder="New message" />
+          {inputField}
         </FormGroup>
       </form>
     );
