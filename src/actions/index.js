@@ -5,7 +5,9 @@ import faker from 'faker';
 import { reset } from 'redux-form';
 
 export const addChannels = createAction('CHANNELS_ADD');
+export const addChannel = createAction('CHANNEL_ADD');
 export const addMessages = createAction('MESSAGES_ADD');
+export const addMessage = createAction('MESSAGE_ADD');
 export const setCurrentChannel = createAction('CURRENT_CHANNEL_SET');
 export const catchError = createAction('ERROR_CATCH');
 export const clearError = createAction('ERROR_CLEAR');

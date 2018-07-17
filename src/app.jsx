@@ -21,19 +21,9 @@ export default ({ channels, messages, currentChannelId }) => {
   store.dispatch(actions.addMessages(messages));
   store.dispatch(actions.setCurrentChannel(currentChannelId));
 
-  // const { username } = cookies.get();
-
-  // if (!username) {
-  //   const newUser = faker.name.findName();
-  //   store.dispatch(actions.setUsername(newUser));
-  //   cookies.set('username', newUser);
-  // } else {
-  //   store.dispatch(actions.setUsername(username));
-  // }
-
   const socket = io();
-  socket.on('newMessage', ({ data: { attributes } }) => store.dispatch(actions.addMessages([attributes])));
-  socket.on('newChannel', ({ data: { attributes } }) => store.dispatch(actions.addChannels([attributes])));
+  socket.on('newMessage', ({ data: { attributes } }) => store.dispatch(actions.addMessage(attributes)));
+  socket.on('newChannel', ({ data: { attributes } }) => store.dispatch(actions.addChannel(attributes)));
   socket.on('removeChannel', ({ data: { id } }) => store.dispatch(actions.removeChannel(id)));
   socket.on('renameChannel', ({ data: { attributes } }) => store.dispatch(actions.renameChannel(attributes)));
 

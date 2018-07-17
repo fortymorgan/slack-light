@@ -7,6 +7,9 @@ const channelsList = handleActions({
   [actions.addChannels](state, { payload }) {
     return [...state, ...payload];
   },
+  [actions.addChannel](state, { payload }) {
+    return [...state, payload];
+  },
   [actions.removeChannel](state, { payload }) {
     return state.filter(ch => ch.id !== payload);
   },
@@ -18,6 +21,9 @@ const channelsList = handleActions({
 const messagesList = handleActions({
   [actions.addMessages](state, { payload }) {
     return [...state, ...payload];
+  },
+  [actions.addMessage](state, { payload }) {
+    return [...state, payload];
   },
 }, []);
 
