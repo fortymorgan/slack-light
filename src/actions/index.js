@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import cookies from 'js-cookie';
 import faker from 'faker';
+import { reset } from 'redux-form';
 
 export const addChannels = createAction('CHANNELS_ADD');
 export const addMessages = createAction('MESSAGES_ADD');
@@ -31,6 +32,7 @@ export const addNewMessage = (text, id) => async (dispatch) => {
     };
 
     await axios.post(`${window.location}api/v1/channels/${id}/messages`, message);
+    dispatch(reset('newMessage'));
   } catch (e) {
     dispatch(catchError(e.message));
   }

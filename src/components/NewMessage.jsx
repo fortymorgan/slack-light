@@ -17,7 +17,6 @@ class NewMessage extends React.Component {
     const { text } = values;
 
     addNewMessage(text, currentChannel);
-    this.props.reset();
   }
 
   render() {
