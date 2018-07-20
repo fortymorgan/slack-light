@@ -4,9 +4,9 @@ import * as actionCreators from '../actions';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
-  const { channels: { list, order }, currentChannel } = state;
+  const { channels, currentChannel } = state;
 
-  const channelsList = order.map(id => list[id]);
+  const channelsList = Object.values(channels);
 
   return { channels: channelsList, currentChannel };
 };

@@ -6,53 +6,22 @@ import * as actions from '../actions';
 
 const channels = handleActions({
   [actions.addChannels](state, { payload }) {
-    return {
-      list: payload.reduce((acc, ch) => ({ ...acc, [ch.id]: ch }), {}),
-      order: payload.map(ch => ch.id),
-    };
+    return _.keyBy(payload, ch => ch.id);
   },
-  [actions.addChannel]({ list, order }, { payload }) {
-    return {
-      list: { ...list, [payload.id]: { ...payload, messages: [] } },
-      order: [...order, payload.id],
-    };
+  [actions.addChannel](state, { payload }) {
+    return { ...state, [payload.id]: payload };
   },
-  [actions.removeChannel]({ list, order }, { payload }) {
-    return {
-      list: _.omit(list, payload),
-      order: order.filter(id => id !== payload),
-    };
+  [actions.removeChannel](state, { payload }) {
+    return _.omit(state, payload);
   },
-  [actions.renameChannel]({ list, order }, { payload }) {
-    return {
-      list: _.mapValues(list, ch => (ch.id === payload.id ? { ...ch, name: payload.name } : ch)),
-      order,
-    };
-  },
-  [actions.addMessages]({ list, order }, { payload }) {
-    return {
-      list: _.mapValues(list, ch =>
-        ({
-          ...ch,
-          messages: payload
-            .filter(m => m.channelId === ch.id)
-            .map(m => m.id),
-        })),
-      order,
-    };
-  },
-  [actions.addMessage]({ list, order }, { payload }) {
-    return {
-      list: _.mapValues(list, ch =>
-        (ch.id === payload.channelId ? { ...ch, messages: [...ch.messages, payload.id] } : ch)),
-      order,
-    };
+  [actions.renameChannel](state, { payload }) {
+    return { ...state, [payload.id]: { ...state[payload.id], name: payload.name } };
   },
 }, {});
 
 const messages = handleActions({
   [actions.addMessages](state, { payload }) {
-    return payload.reduce((acc, m) => ({ ...acc, [m.id]: m }), {});
+    return _.keyBy(payload, m => m.id);
   },
   [actions.addMessage](state, { payload }) {
     return { ...state, [payload.id]: payload };

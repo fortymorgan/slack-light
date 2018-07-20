@@ -14,14 +14,9 @@ const Message = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const {
-    messages,
-    channels,
-    error,
-    currentChannel,
-  } = state;
+  const { messages, error, currentChannel } = state;
 
-  const currentMessages = channels.list[currentChannel].messages.map(id => messages[id]);
+  const currentMessages = Object.values(messages).filter(m => m.channelId === currentChannel);
 
   return { messages: currentMessages, error };
 };
