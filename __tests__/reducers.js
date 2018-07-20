@@ -4,16 +4,17 @@ import { addChannels, removeChannel, renameChannel } from '../src/actions';
 describe('channels list reducers', () => {
   const state = {
     channels: {
-      list: [
-        {
+      list: {
+        1: {
           name: 'general',
           id: 1,
         },
-        {
+        2: {
           name: 'custom',
           id: 2,
         },
-      ],
+      },
+      order: [1, 2],
     },
   };
 
@@ -31,30 +32,36 @@ describe('channels list reducers', () => {
         name: 'custom',
         id: 2,
       },
-    ])).channels.list).toEqual(state.channels.list);
+    ])).channels).toEqual(state.channels);
   });
 
   it('should remove channel from list', () => {
-    expect(reducers(state, removeChannel(2)).channels.list).toEqual([
-      {
-        name: 'general',
-        id: 1,
+    expect(reducers(state, removeChannel(2)).channels).toEqual({
+      list: {
+        1: {
+          name: 'general',
+          id: 1,
+        },
       },
-    ]);
+      order: [1],
+    });
   });
   it('should rename channel in list', () => {
     expect(reducers(state, renameChannel({
       name: 'random',
       id: 2,
-    })).channels.list).toEqual([
-      {
-        name: 'general',
-        id: 1,
+    })).channels).toEqual({
+      list: {
+        1: {
+          name: 'general',
+          id: 1,
+        },
+        2: {
+          name: 'random',
+          id: 2,
+        },
       },
-      {
-        name: 'random',
-        id: 2,
-      },
-    ]);
+      order: [1, 2],
+    });
   });
 });
