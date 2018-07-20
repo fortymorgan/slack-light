@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import cookies from 'js-cookie';
 import { reset } from 'redux-form';
+import routes from '../routes';
 
 export const addChannels = createAction('CHANNELS_ADD');
 export const addChannel = createAction('CHANNEL_ADD');
@@ -32,7 +33,7 @@ export const addNewMessage = (text, id) => async (dispatch) => {
       },
     };
 
-    await axios.post(`api/v1/channels/${id}/messages`, message);
+    await axios.post(routes.messages(id), message);
     dispatch(newMessageSuccess());
     dispatch(reset('newMessage'));
   } catch (e) {
@@ -51,7 +52,7 @@ export const addNewChannel = name => async (dispatch) => {
       },
     };
 
-    await axios.post('api/v1/channels', channel);
+    await axios.post(routes.channels(), channel);
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -59,7 +60,7 @@ export const addNewChannel = name => async (dispatch) => {
 
 export const removeExistingChannel = id => async (dispatch) => {
   try {
-    await axios.delete(`api/v1/channels/${id}`);
+    await axios.delete(routes.channel(id));
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -75,7 +76,7 @@ export const renameExistingChannel = (id, name) => async (dispatch) => {
       },
     };
 
-    await axios.patch(`api/v1/channels/${id}`, channel);
+    await axios.patch(routes.channel(id), channel);
   } catch (e) {
     dispatch(catchError(e.message));
   }
