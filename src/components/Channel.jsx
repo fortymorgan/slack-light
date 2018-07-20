@@ -40,7 +40,9 @@ const Channel = (props) => {
     active,
   });
 
-  return <li className={className} onClick={handleSwitch}>{name}{options}</li>;
+  const channelName = <span onClick={handleSwitch}>{name}</span>;
+
+  return <li className={className}>{channelName}{options}</li>;
 };
 
 export default Channel;

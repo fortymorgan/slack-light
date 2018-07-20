@@ -14,9 +14,16 @@ const Message = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { messages: { list }, channels: { current }, error: { message } } = state;
+  const {
+    messages,
+    channels,
+    error,
+    currentChannel,
+  } = state;
 
-  return { messages: list.filter(m => m.channelId === current), error: message };
+  const currentMessages = channels.list[currentChannel].messages.map(id => messages[id]);
+
+  return { messages: currentMessages, error };
 };
 
 @connect(mapStateToProps, actionCreators)

@@ -4,9 +4,9 @@ import * as actionCreators from '../actions';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
-  const { channels: { list, current } } = state;
+  const { channels, currentChannel } = state;
 
-  return { channelsList: list, currentChannel: current };
+  return { channels, currentChannel };
 };
 
 @connect(mapStateToProps, actionCreators)
@@ -44,19 +44,19 @@ export default class ChannelsList extends React.Component {
   }
 
   render() {
-    const { channelsList, currentChannel } = this.props;
+    const { channels: { list, order }, currentChannel } = this.props;
 
     return (
       <ul className="list-group col-3">
-        {channelsList.map(({ id, name, removable }) => (
+        {order.map(id => (
           <Channel
             key={id}
             active={currentChannel === id}
-            name={name}
+            name={list[id].name}
             handleSwitch={this.onSwitchChannel(id)}
             handleRemove={this.onRemoveChannel(id)}
-            handleRename={this.onRenameChannel(id, name)}
-            removable={removable}
+            handleRename={this.onRenameChannel(id, list[id].name)}
+            removable={list[id].removable}
           />
         ))}
         <li className="list-group-item" onClick={this.onAddChannel}>+ Add channel</li>
