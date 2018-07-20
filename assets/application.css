@@ -11,7 +11,8 @@
 }
 
 .channel-name,
-.delete, .rename {
+.delete, .rename,
+.add-channel {
   cursor: pointer;
 }
 
