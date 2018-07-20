@@ -3,9 +3,13 @@
 exports[`channel component active non-removable 1`] = `
 <li
   className="list-group-item d-flex justify-content-between pr-3 active"
-  onClick={undefined}
 >
-  general
+  <span
+    className="channel-name"
+    onClick={undefined}
+  >
+    general
+  </span>
   <div
     className="options d-flex"
   >
@@ -24,9 +28,13 @@ exports[`channel component active non-removable 1`] = `
 exports[`channel component active removable 1`] = `
 <li
   className="list-group-item d-flex justify-content-between pr-3 active"
-  onClick={undefined}
 >
-  general
+  <span
+    className="channel-name"
+    onClick={undefined}
+  >
+    general
+  </span>
   <div
     className="options d-flex"
   >
@@ -53,9 +61,13 @@ exports[`channel component active removable 1`] = `
 exports[`channel component non-active non-removable 1`] = `
 <li
   className="list-group-item d-flex justify-content-between pr-3"
-  onClick={undefined}
 >
-  general
+  <span
+    className="channel-name"
+    onClick={undefined}
+  >
+    general
+  </span>
   <div
     className="options d-flex"
   >
@@ -74,9 +86,13 @@ exports[`channel component non-active non-removable 1`] = `
 exports[`channel component non-active removable 1`] = `
 <li
   className="list-group-item d-flex justify-content-between pr-3"
-  onClick={undefined}
 >
-  general
+  <span
+    className="channel-name"
+    onClick={undefined}
+  >
+    general
+  </span>
   <div
     className="options d-flex"
   >
