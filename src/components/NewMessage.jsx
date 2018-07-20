@@ -13,23 +13,28 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps, actionCreators)
 class NewMessage extends React.Component {
   addMessage = (values) => {
-    const { addNewMessage, currentChannel } = this.props;
+    const { addNewMessage, currentChannel, pristine } = this.props;
     const { text } = values;
 
-    addNewMessage(text, currentChannel);
+    return !pristine && addNewMessage(text, currentChannel);
   }
 
   render() {
-    const { newMessageState } = this.props;
-    const disabled = newMessageState === 'request';
-    const inputField = disabled ?
-      <Field name="text" disabled component="input" type="text" className="form-control" placeholder="New message" /> :
-      <Field name="text" component="input" type="text" className="form-control" placeholder="New message" autoFocus />;
+    const { submitting } = this.props;
+
+    const input = field => <input
+      {...field.input}
+      type="text"
+      className="form-control"
+      placeholder="New message"
+      disabled={submitting}
+      autoFocus
+    />;
 
     return (
       <form onSubmit={this.props.handleSubmit(this.addMessage)}>
         <FormGroup>
-          {inputField}
+          <Field name="text" component={input} />
         </FormGroup>
       </form>
     );

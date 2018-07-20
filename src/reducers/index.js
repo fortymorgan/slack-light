@@ -44,22 +44,9 @@ const error = handleActions({
   },
 }, {});
 
-const newMessageState = handleActions({
-  [actions.newMessageRequest]() {
-    return 'request';
-  },
-  [actions.newMessageSuccess]() {
-    return 'success';
-  },
-  [actions.newMessageFailure]() {
-    return 'failure';
-  },
-}, '');
-
 export default combineReducers({
   channels,
   messages,
   error,
-  newMessageState,
   form: formReducer,
 });
