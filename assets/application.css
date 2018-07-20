@@ -10,6 +10,11 @@
   overflow: auto;
 }
 
+.channel-name,
+.delete, .rename {
+  cursor: pointer;
+}
+
 .delete:before {
   content: url(img/cross.svg);
 }

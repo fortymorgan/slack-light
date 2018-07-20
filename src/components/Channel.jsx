@@ -40,7 +40,7 @@ const Channel = (props) => {
     active,
   });
 
-  const channelName = <span onClick={handleSwitch}>{name}</span>;
+  const channelName = <span onClick={handleSwitch} className="channel-name">{name}</span>;
 
   return <li className={className}>{channelName}{options}</li>;
 };
