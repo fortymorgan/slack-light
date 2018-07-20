@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
 import cookies from 'js-cookie';
-import faker from 'faker';
 import { reset } from 'redux-form';
 
 export const addChannels = createAction('CHANNELS_ADD');
@@ -19,12 +18,7 @@ export const newMessageSuccess = createAction('NEW_MESSAGE_SUCCESS');
 export const newMessageFailure = createAction('NEW_MESSAGE_FAILURE');
 
 export const addNewMessage = (text, id) => async (dispatch) => {
-  let { username } = cookies.get();
-
-  if (!username) {
-    username = faker.name.findName();
-    cookies.set('username', username);
-  }
+  const { username } = cookies.get();
 
   dispatch(newMessageRequest());
   try {

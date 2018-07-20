@@ -4,6 +4,8 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import io from 'socket.io-client';
+import cookies from 'js-cookie';
+import faker from 'faker';
 import App from './components/App.jsx';
 import * as actions from './actions';
 import reducers from './reducers';
@@ -16,6 +18,12 @@ export default ({ channels, messages, currentChannelId }) => {
     reducers,
     composeEnhancers(applyMiddleware(thunk)),
   );
+
+  const { username } = cookies.get();
+
+  if (!username) {
+    cookies.set('username', faker.name.findName());
+  }
 
   store.dispatch(actions.addChannels(channels));
   store.dispatch(actions.addMessages(messages));
