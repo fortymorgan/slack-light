@@ -52,10 +52,27 @@ const currentChannel = handleActions({
   },
 }, 0);
 
+const modal = handleActions({
+  [actions.showModal](state, { payload: { type, id, initial } }) {
+    return {
+      show: true,
+      type,
+      id,
+      initial,
+    };
+  },
+  [actions.hideModal]() {
+    return {
+      show: false,
+    };
+  },
+}, { show: false });
+
 export default combineReducers({
   channels,
   messages,
   currentChannel,
   error,
+  modal,
   form: formReducer,
 });

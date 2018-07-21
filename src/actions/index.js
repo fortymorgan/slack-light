@@ -13,6 +13,8 @@ export const catchError = createAction('ERROR_CATCH');
 export const clearError = createAction('ERROR_CLEAR');
 export const removeChannel = createAction('CHANNEL_REMOVE');
 export const renameChannel = createAction('CHANNEL_RENAME');
+export const showModal = createAction('MODAL_SHOW');
+export const hideModal = createAction('MODAL_HIDE');
 
 export const addNewMessage = (text, id) => async (dispatch) => {
   const { username } = cookies.get();
@@ -46,6 +48,7 @@ export const addNewChannel = name => async (dispatch) => {
     };
 
     await axios.post(routes.channels(), channel);
+    dispatch(hideModal());
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -54,6 +57,7 @@ export const addNewChannel = name => async (dispatch) => {
 export const removeExistingChannel = id => async (dispatch) => {
   try {
     await axios.delete(routes.channel(id));
+    dispatch(hideModal());
   } catch (e) {
     dispatch(catchError(e.message));
   }
@@ -70,6 +74,7 @@ export const renameExistingChannel = (id, name) => async (dispatch) => {
     };
 
     await axios.patch(routes.channel(id), channel);
+    dispatch(hideModal());
   } catch (e) {
     dispatch(catchError(e.message));
   }

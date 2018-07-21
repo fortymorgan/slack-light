@@ -19,30 +19,18 @@ export default class ChannelsList extends React.Component {
   }
 
   onAddChannel = () => {
-    const { addNewChannel } = this.props;
-    // eslint-disable-next-line no-alert
-    const name = window.prompt('Enter channel name (Empty name not allowed)', '');
-    if (name) {
-      addNewChannel(name);
-    }
+    const { showModal } = this.props;
+    showModal({ type: 'add' });
   }
 
   onRemoveChannel = id => () => {
-    const { removeExistingChannel } = this.props;
-    // eslint-disable-next-line no-alert
-    const confirm = window.confirm('Are you sure?');
-    if (confirm) {
-      removeExistingChannel(id);
-    }
+    const { showModal } = this.props;
+    showModal({ type: 'remove', id });
   }
 
   onRenameChannel = (id, name) => () => {
-    const { renameExistingChannel } = this.props;
-    // eslint-disable-next-line no-alert
-    const newName = window.prompt('Rename channel (Empty name not allowed)', name);
-    if (newName) {
-      renameExistingChannel(id, newName);
-    }
+    const { showModal } = this.props;
+    showModal({ type: 'rename', id, initialValue: name });
   }
 
   render() {
