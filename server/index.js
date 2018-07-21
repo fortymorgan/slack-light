@@ -19,11 +19,9 @@ export default () => {
   app.keys = ['some secret hurr'];
   app.use(session(app));
   app.use(bodyParser());
-  if (!process.env.NODE_ENV) {
-    app.use(middleware({
-      config: webpackConfig,
-    }));
-  }
+  app.use(middleware({
+    config: webpackConfig,
+  }));
 
   const router = new Router();
 
