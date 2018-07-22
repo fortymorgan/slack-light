@@ -13,9 +13,11 @@ const mapStateToProps = (state) => {
 
 @connect(mapStateToProps, actionCreators)
 export default class ChannelsList extends React.Component {
-  onSwitchChannel = id => () => {
-    const { setCurrentChannel } = this.props;
-    setCurrentChannel(id);
+  onSwitchChannel = id => (e) => {
+    if (e.currentTarget === e.target) {
+      const { setCurrentChannel } = this.props;
+      setCurrentChannel(id);
+    }
   }
 
   onAddChannel = () => {

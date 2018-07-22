@@ -37,12 +37,11 @@ const Channel = (props) => {
     'd-flex': true,
     'justify-content-between': true,
     'pr-3': true,
+    channel: true,
     active,
   });
 
-  const channelName = <span onClick={handleSwitch} className="channel-name">{name}</span>;
-
-  return <li className={className}>{channelName}{options}</li>;
+  return <li className={className} onClick={handleSwitch}>{name}{options}</li>;
 };
 
 export default Channel;

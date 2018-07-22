@@ -10,7 +10,7 @@
   overflow: auto;
 }
 
-.channel-name,
+.channel,
 .delete, .rename,
 .add-channel {
   cursor: pointer;
