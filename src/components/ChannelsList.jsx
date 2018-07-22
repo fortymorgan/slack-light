@@ -30,7 +30,7 @@ export default class ChannelsList extends React.Component {
 
   onRenameChannel = (id, name) => () => {
     const { showModal } = this.props;
-    showModal({ type: 'rename', id, initialValue: name });
+    showModal({ type: 'rename', id, initial: name });
   }
 
   render() {
