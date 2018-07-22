@@ -23,3 +23,7 @@
 .rename:before {
   content: url(img/pencil.svg);
 }
+
+.modal-backdrop.in {
+  opacity: .5;
+}
