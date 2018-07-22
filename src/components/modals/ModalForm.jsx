@@ -19,6 +19,7 @@ const Form = (props) => {
           component="input"
           className="form-control"
           placeholder="Channel name"
+          autoComplete="off"
           autoFocus
         />
       </Modal.Body>
