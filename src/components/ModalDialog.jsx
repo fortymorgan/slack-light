@@ -1,8 +1,7 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import ModalForm from './ModalForm';
 import * as actionCreators from '../actions';
+import { ModalAdd, ModalRename, ModalRemove } from './Modals';
 
 const mapStateToProps = (state) => {
   const { modal } = state;
@@ -42,51 +41,25 @@ export default class ModalDialog extends React.Component {
       return null;
     }
 
-    const header = text => (
-      <Modal.Header>
-        <Modal.Title>{text}</Modal.Title>
-      </Modal.Header>
-    );
-
     const content = {
-      add: {
-        header: header('Add channel'),
-        body: (
-          <ModalForm
-            onClose={hideModal}
-            submitName="Add"
-            initialValues={{ channel: '' }}
-            onSubmit={this.onAddChannel}
-          />
-        ),
-      },
-      rename: {
-        header: header('Rename Channel'),
-        body: (
-          <ModalForm
-            onClose={hideModal}
-            submitName="Rename"
-            initialValues={{ channel: initial }}
-            onSubmit={this.onRenameChannel(id)}
-          />
-        ),
-      },
-      remove: {
-        header: header('Are you sure?'),
-        body: (
-          <Modal.Footer>
-            <Button bsStyle="primary" onClick={this.onRemoveChannel(id)}>Yes</Button>
-            <Button onClick={hideModal}>Cancel</Button>
-          </Modal.Footer>
-        ),
-      },
+      add: <ModalAdd
+            show={show}
+            hideModal={hideModal}
+            onAddChannel={this.onAddChannel}
+          />,
+      rename: <ModalRename
+                show={show}
+                initial={initial}
+                hideModal={hideModal}
+                onRenameChannel={this.onRenameChannel(id)}
+              />,
+      remove: <ModalRemove
+                show={show}
+                hideModal={hideModal}
+                onRemoveChannel={this.onRemoveChannel(id)}
+              />,
     };
 
-    return (
-      <Modal show={show} bsSize="sm">
-        {content[type].header}
-        {content[type].body}
-      </Modal>
-    );
+    return content[type];
   }
 }
