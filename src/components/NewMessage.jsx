@@ -28,6 +28,7 @@ class NewMessage extends React.Component {
       className="form-control"
       placeholder="New message"
       disabled={submitting}
+      autoComplete="off"
       autoFocus
     />;
 
