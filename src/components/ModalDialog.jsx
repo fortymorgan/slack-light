@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
-import { ModalAdd, ModalRename, ModalRemove } from './Modals';
+import ModalAdd from './modals/ModalAdd';
+import ModalRename from './modals/ModalRename';
+import ModalRemove from './modals/ModalRemove';
 
 const mapStateToProps = (state) => {
   const { modal } = state;
