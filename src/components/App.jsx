@@ -4,7 +4,7 @@ import Chat from './Chat';
 import ModalDialog from './ModalDialog';
 
 const App = () => (
-  <div className="row">
+  <div className="app">
     <ChannelsList />
     <Chat />
     <ModalDialog />

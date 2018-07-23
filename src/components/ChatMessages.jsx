@@ -35,8 +35,8 @@ export default class ChatMessages extends React.Component {
     const { messages, error, clearError } = this.props;
 
     return (
-      <div className="chat d-flex flex-column justify-content-between">
-        <div className="messages mb-3" ref={(div) => { this.window = div; }}>
+      <div className="chat-messages mb-3">
+        <div className="messages" ref={(div) => { this.window = div; }}>
           {messages.map(m => <Message key={m.id} message={m} />)}
         </div>
         <ErrorMessage message={error} handler={clearError} />

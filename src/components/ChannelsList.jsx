@@ -39,7 +39,7 @@ export default class ChannelsList extends React.Component {
     const { channels, currentChannel } = this.props;
 
     return (
-      <ul className="list-group col-3">
+      <ul className="list-group">
         {channels.map(({ id, name, removable }) => (
           <Channel
             key={id}

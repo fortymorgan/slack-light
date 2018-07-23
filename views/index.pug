@@ -2,18 +2,12 @@ doctype html
 html(lang="en")
   head
     title= Title
+    meta(name='viewport', content="initial-scale=1.0, width=device-width")
     script.
       var gon = !{JSON.stringify(gon)};
   body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-faded
-      a.navbar-brand(href="/") Chat
-      button.navbar-toggler(data-toggle="collapse" data-target="#navbarSupportedContent")
-        span.navbar-toggler-icon
-      .collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-          li.nav-item.active
-            a.nav-link(href="/") Home
     .container
+      h4.pt-3.m-0.pb-3 Chat
       #chat
       // block content
     script(src='/assets/main.js')
