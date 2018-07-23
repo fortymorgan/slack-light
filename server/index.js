@@ -9,6 +9,7 @@ import middleware from 'koa-webpack';
 import bodyParser from 'koa-bodyparser';
 import session from 'koa-generic-session';
 import _ from 'lodash';
+import serve from 'koa-static';
 import addRoutes from './routes';
 
 import webpackConfig from '../webpack.config';
@@ -19,9 +20,11 @@ export default () => {
   app.keys = ['some secret hurr'];
   app.use(session(app));
   app.use(bodyParser());
-  app.use(middleware({
-    config: webpackConfig,
-  }));
+  if (process.env.NODE_ENV !== 'production') {
+    app.use(middleware({
+      config: webpackConfig,
+    }));
+  }
 
   const router = new Router();
 
@@ -47,6 +50,7 @@ export default () => {
   addRoutes(router, io);
   app.use(router.allowedMethods());
   app.use(router.routes());
+  app.use(serve('assets/'));
 
   return server;
 };
