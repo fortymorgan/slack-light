@@ -50,7 +50,7 @@ export default () => {
   addRoutes(router, io);
   app.use(router.allowedMethods());
   app.use(router.routes());
-  app.use(serve('assets/'));
+  app.use(serve('/app'));
 
   return server;
 };
