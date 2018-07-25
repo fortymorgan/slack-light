@@ -31,7 +31,7 @@ export default class ModalDialog extends React.Component {
 
   onHideModal = () => {
     const { hideModal, showModal } = this.props;
-    if (window.outerWidth < 768) {
+    if (window.innerWidth < 768) {
       showModal({ type: 'channels' });
     } else {
       hideModal();

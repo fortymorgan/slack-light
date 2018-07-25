@@ -34,8 +34,12 @@ export default class ChatMessages extends React.Component {
   render() {
     const { messages, error, clearError } = this.props;
 
+    const divStyle = {
+      height: window.innerHeight - 128,
+    };
+
     return (
-      <div className="chat-messages" ref={(div) => { this.window = div; }}>
+      <div className="chat-messages" ref={(div) => { this.window = div; }} style={divStyle}>
         <div className="messages">
           {messages.map(m => <Message key={m.id} message={m} />)}
         </div>

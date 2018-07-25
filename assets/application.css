@@ -40,7 +40,6 @@
 
 .chat-messages {
   grid-row: 2 / 3;
-  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
