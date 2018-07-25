@@ -4,6 +4,7 @@ import * as actionCreators from '../actions';
 import ModalAdd from './modals/ModalAdd';
 import ModalRename from './modals/ModalRename';
 import ModalRemove from './modals/ModalRemove';
+import ModalChannels from './modals/ModalChannels';
 
 const mapStateToProps = (state) => {
   const { modal } = state;
@@ -28,6 +29,15 @@ export default class ModalDialog extends React.Component {
     renameExistingChannel(id, values.channel);
   }
 
+  onHideModal = () => {
+    const { hideModal, showModal } = this.props;
+    if (window.outerWidth < 768) {
+      showModal({ type: 'channels' });
+    } else {
+      hideModal();
+    }
+  }
+
   render() {
     const {
       modal: {
@@ -46,20 +56,24 @@ export default class ModalDialog extends React.Component {
     const content = {
       add: <ModalAdd
             show={show}
-            hideModal={hideModal}
+            hideModal={this.onHideModal}
             onAddChannel={this.onAddChannel}
           />,
       rename: <ModalRename
                 show={show}
                 initial={initial}
-                hideModal={hideModal}
+                hideModal={this.onHideModal}
                 onRenameChannel={this.onRenameChannel(id)}
               />,
       remove: <ModalRemove
                 show={show}
-                hideModal={hideModal}
+                hideModal={this.onHideModal}
                 onRemoveChannel={this.onRemoveChannel(id)}
               />,
+      channels: <ModalChannels
+                  show={show}
+                  hideModal={hideModal}
+                />,
     };
 
     return content[type];

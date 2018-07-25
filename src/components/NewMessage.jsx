@@ -33,7 +33,7 @@ class NewMessage extends React.Component {
     />;
 
     return (
-      <form onSubmit={this.props.handleSubmit(this.addMessage)}>
+      <form onSubmit={this.props.handleSubmit(this.addMessage)} className="new-message">
         <FormGroup>
           <Field name="text" component={input} />
         </FormGroup>

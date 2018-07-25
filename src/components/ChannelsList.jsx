@@ -1,22 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import cn from 'classnames';
 import * as actionCreators from '../actions';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
-  const { channels, currentChannel } = state;
+  const { channels, currentChannel, modal } = state;
 
   const channelsList = Object.values(channels);
 
-  return { channels: channelsList, currentChannel };
+  return { channels: channelsList, currentChannel, modal };
 };
 
 @connect(mapStateToProps, actionCreators)
 export default class ChannelsList extends React.Component {
   onSwitchChannel = id => (e) => {
+    const { hideModal } = this.props;
     if (e.currentTarget === e.target) {
       const { setCurrentChannel } = this.props;
       setCurrentChannel(id);
+      hideModal();
     }
   }
 
@@ -36,10 +39,16 @@ export default class ChannelsList extends React.Component {
   }
 
   render() {
-    const { channels, currentChannel } = this.props;
+    const { channels, currentChannel, inModal } = this.props;
+
+    const className = cn({
+      'list-group': true,
+      'channels-list': true,
+      'modal-show': inModal,
+    });
 
     return (
-      <ul className="list-group">
+      <ul className={className}>
         {channels.map(({ id, name, removable }) => (
           <Channel
             key={id}
