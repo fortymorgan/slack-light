@@ -25,6 +25,10 @@ export default ({ channels, messages, currentChannelId }) => {
     cookies.set('username', faker.name.findName());
   }
 
+  window.addEventListener('resize', (e) => {
+    store.dispatch(actions.resizeWindow(e.target.innerHeight));
+  });
+
   store.dispatch(actions.addChannels(channels));
   store.dispatch(actions.addMessages(messages));
   store.dispatch(actions.setCurrentChannel(currentChannelId));

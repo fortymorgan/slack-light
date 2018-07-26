@@ -15,6 +15,7 @@ export const removeChannel = createAction('CHANNEL_REMOVE');
 export const renameChannel = createAction('CHANNEL_RENAME');
 export const showModal = createAction('MODAL_SHOW');
 export const hideModal = createAction('MODAL_HIDE');
+export const resizeWindow = createAction('WINDOW_RESIZE');
 
 export const addNewMessage = (text, id) => async (dispatch) => {
   const { username } = cookies.get();

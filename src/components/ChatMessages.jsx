@@ -14,11 +14,16 @@ const Message = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { messages, error, currentChannel } = state;
+  const {
+    messages,
+    error,
+    currentChannel,
+    windowHeight,
+  } = state;
 
   const currentMessages = Object.values(messages).filter(m => m.channelId === currentChannel);
 
-  return { messages: currentMessages, error };
+  return { messages: currentMessages, error, windowHeight };
 };
 
 @connect(mapStateToProps, actionCreators)
@@ -32,10 +37,15 @@ export default class ChatMessages extends React.Component {
   }
 
   render() {
-    const { messages, error, clearError } = this.props;
+    const {
+      messages,
+      error,
+      clearError,
+      windowHeight,
+    } = this.props;
 
     const divStyle = {
-      height: window.innerHeight - 128,
+      height: windowHeight - 128,
     };
 
     return (

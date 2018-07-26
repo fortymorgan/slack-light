@@ -68,11 +68,18 @@ const modal = handleActions({
   },
 }, { show: false });
 
+const windowHeight = handleActions({
+  [actions.resizeWindow](state, { payload }) {
+    return payload;
+  },
+}, window.innerHeight);
+
 export default combineReducers({
   channels,
   messages,
   currentChannel,
   error,
   modal,
+  windowHeight,
   form: formReducer,
 });
