@@ -11,6 +11,7 @@ const Input = field => (
     className="form-control"
     placeholder="New message"
     disabled={field.meta.submitting}
+    autoFocus
     autoComplete="off"
   />
 );
