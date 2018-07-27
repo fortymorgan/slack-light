@@ -23,6 +23,7 @@
   grid-column: 1 / 2;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .channels-button {
@@ -31,6 +32,10 @@
 
 .sandwich {
   content: url(img/menu.svg);
+}
+
+.current-channel-name {
+  display: none;
 }
 
 .channels-list {
@@ -64,7 +69,9 @@
 }
 
 @media screen and (max-width: 767px) {
-  .channels-button {
+  .channels-button,
+  .current-channel-name,
+  .modal-show {
     display: block;
   }
 
@@ -74,9 +81,5 @@
 
   .app {
     grid-template-columns: 1fr;
-  }
-
-  .modal-show {
-    display: block;
   }
 }
