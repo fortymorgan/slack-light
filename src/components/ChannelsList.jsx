@@ -60,7 +60,7 @@ export default class ChannelsList extends React.Component {
             removable={removable}
           />
         ))}
-        <li className="list-group-item add-channel" onClick={this.onAddChannel}>+ Add channel</li>
+        <li className="list-group-item add-channel" onClick={this.onAddChannel}>+ add channel</li>
       </ul>
     );
   }
