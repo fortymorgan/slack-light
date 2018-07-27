@@ -69,14 +69,14 @@
 }
 
 @media screen and (max-width: 767px) {
+  .channels-list {
+    display: none;
+  }
+
   .channels-button,
   .current-channel-name,
   .modal-show {
     display: block;
-  }
-
-  .channels-list {
-    display: none;
   }
 
   .app {
