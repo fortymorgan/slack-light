@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import path from 'path';
 import Router from 'koa-router';
 import send from 'koa-send';
 
@@ -107,7 +108,7 @@ export default (router, io) => {
       ctx.render('index', { gon: state });
     })
     .get('/assets', (ctx) => {
-      send(ctx, ctx.path);
+      send(ctx, path.join(__dirname, ctx.path));
     })
     .use('/api/v1', apiRouter.routes(), apiRouter.allowedMethods());
 };
