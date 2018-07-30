@@ -45,7 +45,7 @@ export default class ChatMessages extends React.Component {
     } = this.props;
 
     const divStyle = {
-      height: windowHeight - 128,
+      height: windowHeight - 138,
     };
 
     return (

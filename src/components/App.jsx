@@ -26,8 +26,8 @@ export default class App extends React.Component {
           <Header />
           <ChannelsList inModal={false} />
           <ChatMessages />
+          <NewMessageForm />
         </div>
-        <NewMessageForm />
         <ModalDialog />
       </div>
     );
