@@ -4,6 +4,8 @@ import Pug from 'koa-pug';
 import socket from 'socket.io';
 import http from 'http';
 import Router from 'koa-router';
+import serve from 'koa-static';
+import mount from 'koa-mount';
 import koaLogger from 'koa-logger';
 import middleware from 'koa-webpack';
 import bodyParser from 'koa-bodyparser';
@@ -49,6 +51,7 @@ export default () => {
   addRoutes(router, io);
   app.use(router.allowedMethods());
   app.use(router.routes());
+  app.use(mount('/assets', serve('assets')));
 
   return server;
 };
