@@ -29,11 +29,9 @@ const mapStateToProps = (state) => {
 
 @connect(mapStateToProps, actionCreators)
 export default class ChatMessages extends React.Component {
-  scrollDown = () => {
-    const { clientHeight, scrollHeight } = this.window;
-
-    if (scrollHeight > clientHeight) {
-      this.window.scrollTop = scrollHeight - clientHeight;
+  scrollDown = (predicate) => {
+    if (predicate) {
+      this.window.scrollTop = this.window.scrollHeight - this.window.clientHeight;
     }
   }
 
@@ -60,6 +58,12 @@ export default class ChatMessages extends React.Component {
   }
 
   componentDidMount() {
-    this.scrollDown();
+    const { clientHeight, scrollHeight } = this.window;
+    this.scrollDown(scrollHeight > clientHeight);
+  }
+
+  componentDidUpdate() {
+    const { clientHeight, scrollHeight, scrollTop } = this.window;
+    this.scrollDown(clientHeight + scrollTop === scrollHeight);
   }
 }
