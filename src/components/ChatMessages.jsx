@@ -5,10 +5,11 @@ import ErrorMessage from './ErrorMessage';
 
 const Message = (props) => {
   const { author, text, time } = props.message;
+  const currentTime = new Date(time).toLocaleTimeString();
   return (
     <div className="d-flex justify-content-between mb-1 mr-2">
       <div><b>{author}:</b> {text}</div>
-      <div>{time}</div>
+      <div>{currentTime}</div>
     </div>
   );
 };

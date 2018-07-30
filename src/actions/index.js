@@ -26,7 +26,7 @@ export const addNewMessage = (text, id) => async (dispatch) => {
         attributes: {
           author: username,
           text,
-          time: new Date().toLocaleTimeString(),
+          time: new Date(),
         },
       },
     };
