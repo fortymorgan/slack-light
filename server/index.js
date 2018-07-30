@@ -9,7 +9,6 @@ import middleware from 'koa-webpack';
 import bodyParser from 'koa-bodyparser';
 import session from 'koa-generic-session';
 import _ from 'lodash';
-import serve from 'koa-static';
 import addRoutes from './routes';
 
 import webpackConfig from '../webpack.config';
@@ -50,7 +49,6 @@ export default () => {
   addRoutes(router, io);
   app.use(router.allowedMethods());
   app.use(router.routes());
-  app.use(serve('/app'));
 
   return server;
 };

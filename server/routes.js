@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Router from 'koa-router';
+import send from 'koa-send';
 
 const getNextId = () => Number(_.uniqueId());
 
@@ -104,6 +105,9 @@ export default (router, io) => {
   return router
     .get('root', '/', (ctx) => {
       ctx.render('index', { gon: state });
+    })
+    .get('/assets', (ctx) => {
+      send(ctx, ctx.path);
     })
     .use('/api/v1', apiRouter.routes(), apiRouter.allowedMethods());
 };
