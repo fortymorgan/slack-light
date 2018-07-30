@@ -49,8 +49,8 @@ export default class ChatMessages extends React.Component {
     };
 
     return (
-      <div className="chat-messages" ref={(div) => { this.window = div; }} style={divStyle}>
-        <div className="messages">
+      <div className="chat-messages" style={divStyle}>
+        <div className="messages" ref={(div) => { this.window = div; }}>
           {messages.map(m => <Message key={m.id} message={m} />)}
         </div>
         <ErrorMessage message={error} handler={clearError} />
@@ -59,10 +59,6 @@ export default class ChatMessages extends React.Component {
   }
 
   componentDidMount() {
-    this.scrollDown();
-  }
-
-  componentDidUpdate() {
     this.scrollDown();
   }
 }

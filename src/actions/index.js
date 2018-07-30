@@ -36,6 +36,12 @@ export const addNewMessage = (text, id) => async (dispatch) => {
   } catch (e) {
     dispatch(catchError(e.message));
   }
+  const messages = document.querySelector('.messages');
+  const { clientHeight, scrollHeight } = messages;
+
+  if (scrollHeight > clientHeight) {
+    messages.scrollTop = scrollHeight - clientHeight;
+  }
 };
 
 export const addNewChannel = name => async (dispatch) => {
