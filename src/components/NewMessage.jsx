@@ -4,18 +4,6 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
 
-const Input = field => (
-  <input
-    {...field.input}
-    type="text"
-    className="form-control"
-    placeholder="New message"
-    disabled={field.meta.submitting}
-    autoFocus
-    autoComplete="off"
-  />
-);
-
 const mapStateToProps = (state) => {
   const { currentChannel, newMessageState } = state;
 
@@ -33,9 +21,17 @@ class NewMessage extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.addMessage)} className="new-message">
+      <form onSubmit={this.props.handleSubmit(this.addMessage)} className="new-message-form">
         <FormGroup>
-          <Field name="text" component={Input} />
+          <Field
+            name="text"
+            type="text"
+            component="input"
+            className="form-control"
+            placeholder="New message"
+            autoComplete="off"
+            autoFocus
+          />
         </FormGroup>
       </form>
     );

@@ -62,7 +62,7 @@
   content: url(img/pencil.svg);
 }
 
-.new-message {
+.new-message-form {
   grid-row: 3 / 4;
   grid-column: 2 / 3;
 }
@@ -82,7 +82,7 @@
     grid-template-columns: 1fr;
   }
 
-  .new-message {
+  .new-message-form {
     grid-column: 1 / 2;
   }
 }
