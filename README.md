@@ -1,28 +1,29 @@
 # Slack-light
 
-This is a multichannel web-chat application for conversations.
+Multichannel web-chat application.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/cd6f3eca4964b433bf97/maintainability)](https://codeclimate.com/github/fortymorgan/project-lvl4-s259/maintainability)
 [![Build Status](https://travis-ci.org/fortymorgan/slack-light.svg?branch=master)](https://travis-ci.org/fortymorgan/slack-light)
 
 ### Screenshots
-Desktop version:  
+
+#### Desktop
 <img src="https://github.com/fortymorgan/slack-light/blob/master/screenshots/Desktop.png" alt="Desktop" title="Desktop version" />
 
-Mobile version:  
+#### Mobile
 <img src="https://github.com/fortymorgan/slack-light/blob/master/screenshots/Mobile.png" width=320 alt="Mobile" title="Mobile version" />
 
 ## How to develop
-To run the project locally first you need to install all dependencies with:
+To run the project locally first you need to install app with:
 ```
-make install-deps
+npm install
 ```
-
-Then run app server with:
+Then run the app server with:
 ```
-make start
+npm run start
 ```
-Server will listen to `http://localhost:4000`. (You can change port number in `server/bin/slack.js`)
+Server will listen to `http://localhost:4000`.  
+(You can change port number in `server/bin/slack.js`. Remember to re-build server `npm run build-server`)
 
 ## How to deploy
 First you need to install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
@@ -55,6 +56,16 @@ git commit -m 'Initial commit`
 git push heroku master
 ```
 Your app will be deployed to `https://*your_project_name*.herokuapp.com`
+
+## Testing
+
+Tests are made with [Jest](https://github.com/facebook/jest)
+
+Run tests with:
+```
+npm test
+```
+Jest snapshots for components tests in `__tests__/__snapshots__`.
 
 ## How to use
 Open the [app](https://slack-s259.herokuapp.com)
