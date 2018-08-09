@@ -23,7 +23,7 @@ Then run the app server with:
 ```
 npm run dev-server
 ```
-Based on the `NODE_ENV` variable, the server uses [koa-webpack](https://github.com/shellscape/koa-webpack) and builds the app automatically. Also server listens to the source code changes and re-builds the app when changes happen.
+Based on the `NODE_ENV` variable, the server uses [koa-webpack](https://github.com/shellscape/koa-webpack) and builds the app automatically. Also the server watches source changes and re-builds the app when they happen.
 
 The server listens to `http://localhost:4000`.  
 (You can change the port number in `server/bin/slack.js`)
