@@ -14,16 +14,17 @@ Multichannel web-chat application.
 <img src="https://github.com/fortymorgan/slack-light/blob/master/screenshots/Mobile.png" width=320 alt="Mobile" title="Mobile version" />
 
 ## How to develop
-To run the project locally first you need to install app with:
+To run the project locally first you need to install the dependencies:
 ```
 npm install
 ```
+
 Then run the app server with:
 ```
 npm run start
 ```
-Server will listen to `http://localhost:4000`.  
-(You can change port number in `server/bin/slack.js`. Remember to re-build server `npm run build-server`)
+The server listens to `http://localhost:4000`.  
+(You can change the port number in `server/bin/slack.js`)
 
 ## How to deploy
 First you need to install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
