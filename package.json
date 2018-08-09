@@ -15,13 +15,12 @@
     "babel-node": "babel-node",
     "flow": "flow",
     "flow-typed": "flow-typed",
-    "start": "babel-node ./dist/bin/slack.js",
+    "start": "babel-node ./server/bin/slack.js",
     "eslint": "eslint",
     "webpack": "webpack",
     "build-server": "babel server --out-dir dist --source-maps inline",
     "build-app": "npm run webpack -- -p --env production",
-    "build": "npm run build-app && npm run build-server",
-    "postinstall": "npm run build"
+    "build": "npm run build-app && npm run build-server"
   },
   "repository": {
     "type": "git",
